@@ -1,4 +1,4 @@
-# nextjs + neon
+# nextjs + neon + drizzle + smdp(QQ)
 
 这是一个基于 nextjs 构建全栈项目模板。数据库使用 neon。并使用 drizzle 作为 ORM 工具。
 另外，用户权限功能
@@ -28,15 +28,15 @@ pnpm add -D drizzle-kit
 在 `src/db/schema` 文件夹中定义每个表的模型；在 `drizzle.config.ts` 中定义配置
 
 ```ts
-import { defineConfig } from "drizzle-kit";
+import { defineConfig } from 'drizzle-kit'
 
 export default defineConfig({
   // 数据库类型，本项目使用 postgresql
-  dialect: "postgresql", // 'mysql' | 'sqlite' | 'turso'
+  dialect: 'postgresql', // 'mysql' | 'sqlite' | 'turso'
 
   // 模型定义的文件夹
-  schema: "./src/db/schema",
-});
+  schema: './src/db/schema',
+})
 ```
 
 ## 连接数据库
@@ -51,7 +51,7 @@ DATABASE_URL=<your neon db url>
 新建 `src/db/index.ts`
 
 ```ts
-import { drizzle } from "drizzle-orm/neon-http";
+import { drizzle } from 'drizzle-orm/neon-http'
 
-export const db = drizzle(process.env.DATABASE_URL || "");
+export const db = drizzle(process.env.DATABASE_URL || '')
 ```

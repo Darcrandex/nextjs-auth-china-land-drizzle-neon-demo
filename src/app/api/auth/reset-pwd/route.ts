@@ -10,6 +10,14 @@ export async function POST(req: NextRequest) {
   // 忘记密码重定向页面会携带 sign
   const { newPassword, sign } = await req.json()
 
+  if (!newPassword) {
+    return NextResponse.json({ message: '密码不能为空' }, { status: 400 })
+  }
+
+  if (!sign) {
+    return NextResponse.json({ message: '签名不能为空' }, { status: 400 })
+  }
+
   try {
     const decryptedSign = await aesDecrypt(sign)
     const dataFromSign = jwt.verify(decryptedSign, process.env.JWT_SECRET!)
@@ -22,6 +30,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: '密码重置成功' })
   } catch (error) {
+    console.log(error)
+
     return NextResponse.json({ message: '密码重置失败' }, { status: 500 })
   }
 }

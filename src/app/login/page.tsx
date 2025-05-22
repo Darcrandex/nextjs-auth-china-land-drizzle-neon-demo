@@ -7,6 +7,7 @@
 
 import { http } from '@/utils/http.client'
 import { useMutation } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -23,7 +24,7 @@ export default function Login() {
 
       if (type === 'login') {
         localStorage.setItem('token', res.data.data)
-        router.replace('/profile')
+        router.replace('/user/profile')
       } else {
         alert('注册成功')
         setEmail('')
@@ -62,6 +63,8 @@ export default function Login() {
         <button type="button" disabled={isPending} onClick={() => onSubmit('register')}>
           注册
         </button>
+
+        <Link href="/user/forget-password">忘记密码</Link>
       </footer>
     </>
   )

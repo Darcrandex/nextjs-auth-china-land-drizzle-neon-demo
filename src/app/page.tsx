@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      <Link href="profile">个人中心</Link>
+      <Link href="/user/profile">个人中心</Link>
 
       <h1>用户列表</h1>
 
