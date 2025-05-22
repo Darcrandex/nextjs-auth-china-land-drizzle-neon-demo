@@ -1,12 +1,20 @@
-# nextjs + neon + drizzle + smdp(QQ)
+# nextjs + neon + drizzle + smtp(QQ)
 
-这是一个基于 nextjs 构建全栈项目模板。数据库使用 neon。并使用 drizzle 作为 ORM 工具。
-另外，用户权限功能
+本项目基于 nextjs 构建，简单实现用户权限功能，包括：
+
+- 登录
+- 注册
+- 忘记密码
+- 重置密码
+- 个人信息
+- 用户列表查询
 
 参考文档
 
 - [neon](https://orm.drizzle.team/docs/get-started/neon-new)
-- [schema](https://orm.drizzle.team/docs/sql-schema-declaration)
+- [drizzle](https://orm.drizzle.team/docs/overview)
+- [drizzle-schema](https://orm.drizzle.team/docs/sql-schema-declaration)
+- [QQ 邮箱开启 smtp](https://zhuanlan.zhihu.com/p/643897161)
 
 ## 创建项目
 
@@ -55,3 +63,5 @@ import { drizzle } from 'drizzle-orm/neon-http'
 
 export const db = drizzle(process.env.DATABASE_URL || '')
 ```
+
+后续的业务接口中可以直接使用 `db` 来操作数据库
