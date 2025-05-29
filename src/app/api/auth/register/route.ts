@@ -24,6 +24,6 @@ export async function POST(request: Request) {
   const hashedPassword = await bcrypt.hash(password, 10)
 
   // 创建新用户
-  await db.insert(users).values({ email, password: hashedPassword, createdAt: new Date() })
+  await db.insert(users).values({ email, password: hashedPassword })
   return NextResponse.json({ message: '注册成功' })
 }
